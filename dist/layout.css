@@ -1,0 +1,108 @@
+html {
+  font-size:62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif !important;
+  text-rendering: geometricPrecision;
+}
+
+body * {
+  border: dashed 2px red;
+}
+
+.layout {
+  height: 100vh;
+  display: flex;
+}
+
+.drawer {
+  display: flex;
+  position: absolute;
+  left:-28rem;
+  height: 100vh;
+  z-index: 1001;
+  min-width: 24rem;
+
+  -webkit-transition: left 0.5s;
+  -webkit-transition-timming-function: ease-in-out;
+  transition: left 0.5s ease-in-out;
+
+  -webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.46);
+  -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.46);
+  box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.46);
+}
+
+.dialog {
+    display:flex;
+    z-index: 1002;
+    min-width: 10rem;
+    min-height: 10rem;
+    background-color: #FFF;
+}
+
+.overlay {
+  display: flex;
+  width:100%;
+  height:100%;
+  z-index: 1000;
+  background-color: rgba(100,100,100,0.7);
+}
+
+.container {
+  flex:1;
+  display:flex;
+}
+
+.toolbar {
+  display:flex;
+  position:absolute;
+  right: -6rem;
+  height: 100vh;
+  z-index: 1001;
+  min-width: 6rem;
+
+  -webkit-transition: right 0.5s;
+  -webkit-transition-timming-function: ease-in-out;
+  transition: right 0.5s ease-in-out;
+
+}
+
+@media (min-width: 1280px) {
+  .drawer {
+    position:relative;
+    left:0px;
+  }
+  .toolbar {
+    position: relative;
+    right:0px;
+  }
+}
+
+/* -------------- */
+
+.uncoverleft {
+  left:0rem;
+}
+
+.uncoverright {
+  right:0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.float {
+  position: absolute;
+}
+
+.land {
+  position: relative;
+}
+
+.centred {
+  justify-content: center;
+  align-items: center;
+}

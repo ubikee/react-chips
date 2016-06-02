@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>samplebook...</title>
+  </head>
+  <script type="text/javascript">
+    function hasGetUserMedia() {
+      return !!(navigator.getUserMedia
+        || navigator.webkitGetUserMedia
+        || navigator.mozGetUserMedia
+        || navigator.msGetUserMedia);
+    }
+
+    function getMedia() {
+        return navigator.getUserMedia
+          || navigator.webkitGetUserMedia
+          || navigator.mozGetUserMedia
+          || navigator.msGetUserMedia;
+    }
+
+    if (hasGetUserMedia()) {
+      //
+    } else {
+      alert('getUserMedia() is not supported in your browser');
+    }
+
+
+  </script>
+  <body>
+    <video autoplay></video>
+    <img src="" alt="" />
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <script type="text/javascript">
+
+      navigator.getMedia = (navigator.getUserMedia
+        || navigator.webkitGetUserMedia
+        || navigator.mozGetUserMedia
+        || navigator.msGetUserMedia);
+
+      var video = document.querySelector('video');
+      var photo = document.querySelector('img');
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext('2d');
+      var width = 640;
+      var height = 480;
+      var streaming = false;
+
+      function snapshot() {
+        height = video.videoHeight / (video.videoWidth/width);
+        ctx.drawImage(video,0,0, width, height);
+        photo.src = canvas.toDataURL('image/webp');
+      }
+
+      video.addEventListener('canplay', function (ev) {
+        if (!streaming)
+          height = video.videoHeight / (video.videoWidth/width);
+        if (isNaN(height))
+           height = width / (4/3);
+
+          video.setAttribute('width', width);
+          video.setAttribute('height', height);
+          canvas.setAttribute('width', width);
+          canvas.setAttribute('height', height);
+         streaming = true;
+      }, false);
+
+      video.addEventListener('click', function (ev) { snapshot(); ev.preventDefault(); }, false);
+
+      navigator.getMedia(
+        {video:true, audio:false},
+        function (localMediaStream) {
+          video.src = window.URL.createObjectURL(localMediaStream);
+
+
+        },
+        function (error) {
+          console.log('Rejected!!!!', error);
+        }
+      );
+
+    </script>
+  </body>
+</html>
