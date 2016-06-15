@@ -1,0 +1,26 @@
+.datepicker {
+  min-height: 15rem;
+  max-height: 15rem;
+  display: flex;
+}
+
+.picker {
+  flex:1;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.datepicker #done > i {
+  font-weight: 600;
+  color: green;
+}
+
+.datepicker #close > i {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: red;
+}

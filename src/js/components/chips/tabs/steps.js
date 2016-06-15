@@ -3,7 +3,7 @@ import { Button } from '../buttons/buttons';
 import './steps.css';
 
 const Step = (props) => (
-  <div id={props.id} className="step mui-panel">
+  <div id={props.id} className="step">
     {props.children}
   </div>
 );

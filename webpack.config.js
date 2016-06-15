@@ -9,7 +9,7 @@ module.exports = {
     inline: true,
     contentBase: './dist',
     https: true,
-    host: '192.168.1.136',
+    host: '192.168.1.137',
     port: 5555,
   },
   module: {

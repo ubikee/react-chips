@@ -21,7 +21,7 @@ const Button = (props) => {
   const onMouseUp = props.classes === 'disabled' ? null : props.onMouseUp;
 
   return (
-    <button id={props.id} className={`button animated ${props.classes}`} onMouseUp={onMouseUp}>
+    <button id={props.id} className={`button animated-fast ${props.classes}`} onMouseUp={onMouseUp}>
       {props.icon ? materialIcon(props.icon) : null}
       {props.label}
     </button>

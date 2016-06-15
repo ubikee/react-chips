@@ -1,0 +1,25 @@
+.filter {
+  min-height: 7rem;
+  max-height: 7rem;
+  padding: 1.6rem 0 ;
+  display: flex;
+  align-items: center;
+}
+
+.filter * {
+  color: #000;
+}
+
+.filter > * {
+  box-sizing: border-box;
+  min-height: 6rem;
+  margin:1rem;
+}
+
+.filter .select {
+  max-width: 10rem;
+}
+
+.filter > .input-textfield {
+  flex:1;
+}

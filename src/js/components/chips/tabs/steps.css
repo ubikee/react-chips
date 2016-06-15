@@ -1,5 +1,6 @@
 .step {
   display:flex;
+  overflow-y: auto;
 }
 
 .stepper {

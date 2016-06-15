@@ -1,0 +1,62 @@
+.page {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.page > header {
+  min-height: 5.6rem;
+  max-height: 5.6rem;
+  padding: 0.4rem 1.6rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+.page > main {
+  background-color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  flex:1;
+  display:flex;
+  flex-direction: column;
+}
+.page .scrollpane {
+  padding: 1rem;
+  overflow-y: auto;
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 960px) {
+
+}
+
+@media (min-width: 960px) and (orientation: landscape) {
+  .page > header {
+    position: fixed;
+    z-index: 2000;
+    width: 100%;
+    left:0px;
+  }
+  .page > main {
+    z-index: 1999;
+    margin-top: 5.6rem;
+    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);
+    padding-left:0px;
+    padding-top: 0px;
+  }
+
+}
+
+@media (min-width: 1280px) {
+  .page > header {
+    position: relative;
+    z-index: auto;
+  }
+  .page > main {
+    margin-top: 0px;
+    z-index: auto;
+  }
+  .page .inbox > .inbox-list{
+    z-index: auto;
+  }
+}

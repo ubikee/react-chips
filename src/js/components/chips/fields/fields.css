@@ -4,7 +4,14 @@
 }
 
 .fieldgroup > .icon {
-  max-width: 10rem;
+  box-sizing: border-box;
+  width: 7.2rem;
+  padding-top: 1.6rem;
+  padding-left: 1.6rem;
+  padding-bottom: 1.6rem;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
 }
 
 .fieldgroup > .fields {
@@ -16,11 +23,20 @@
 .fieldgroup > .fields > .field {
   flex:1;
   min-width: 15rem;
-  padding: 1rem;
+  padding-right: 1rem;
 }
-
+.fieldgroup > .fields > .field.static {
+  flex:0;
+  min-width: 15rem;
+  padding-right: 1rem;
+}
 h5 > i {
   padding: 0px 15px 0px 15px;
+}
+
+.field.static {
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 
 .field > .checkbox {

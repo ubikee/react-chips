@@ -16,35 +16,51 @@ FieldGroup.propTypes = {
 class Field extends React.Component {
 
   static propTypes = {
+    id: React.PropTypes.string,
     label: React.PropTypes.string,
     value: React.PropTypes.string,
+    readOnly: React.PropTypes.bool,
     onChange: React.PropTypes.func,
   };
 
   handleChange = (e) => {
-    this.props.onChange(e.target.value);
+    this.props.onChange(e.target.value, this.props.id);
   };
 
-  render() {
+  renderStatic() {
     return (
-      <div className="field input-textfield mui-textfield mui-textfield--float-label">
-        <input type="text" value={this.props.value} onChange={this.handleChange}></input>
+      <div className="field input-textfield mui-textfield static">
         <label>{this.props.label}</label>
+        <div style={{ minHeight: '3rem', paddingTop: '0.5rem', fontSize: '1.5rem'}}>{this.props.value}</div>
       </div>
     );
+  }
+
+  render() {
+    return this.props.readOnly ? this.renderStatic() : this.renderInput()
+  }
+
+  renderInput() {
+      return (
+        <div className="field input-textfield mui-textfield mui-textfield--float-label">
+          <input id={this.props.id} type="text" value={this.props.value} onChange={this.handleChange}></input>
+          <label>{this.props.label}</label>
+        </div>
+      );
   }
 }
 
 const Select = (props) => {
-  const options = props.options.map(option => (<option>{option.label}</option>));
+
+  const options = props.options.map(option => (<option value={option.value} disabled={option.disabled} >{option.label}</option>));
 
   const handleChange = (e) => {
-    this.props.onChange(e.target.value);
+    props.onChange(e.target.value);
   };
 
   return (
     <div className="field select mui-select">
-      <select className="mui-select" value={props.value} onChange={handleChange}>
+      <select value={props.value} onChange={handleChange} style={{marginBottom:'0'}}>
         {options}
       </select>
     </div>

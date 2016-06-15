@@ -21,9 +21,14 @@
   outline: 0;
 }
 
+.icon-button:hover {
+  background-color: #EEE;
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
 .icon-button:active {
   background-color: #CCC;
-  background-color: rgba(200, 200, 200, 0.3);
+  background-color: rgba(100, 100, 100, 0.3);
 }
 
 .button {
@@ -33,10 +38,12 @@
   padding: 1rem;
   border: 0;
   border-radius: 0.2rem;
-  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: #3F51B5;
+  background-color: transparent;
 }
 
 .button:hover {
@@ -60,8 +67,12 @@
   box-shadow: 0 2px 3px rgba(0,0,0,.19),0 1px 1px rgba(0,0,0,.23);
 }
 
+.button.raised:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+}
+
 .button.raised:active {
-  box-shadow: 0 4px 6px rgba(0,0,0,.19),0 3px 3px rgba(0,0,0,.23);
+  box-shadow: 0 4px 6px rgba(0,0,0,.39),0 3px 3px rgba(0,0,0,.43);
 }
 
 .fab {
