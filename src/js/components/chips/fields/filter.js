@@ -8,8 +8,7 @@ class Filter extends React.Component {
 
   static propTypes = {
     options: React.PropTypes.array,
-    criteria: React.PropTypes.string,
-    value: React.PropTypes.string,
+    filter: React.PropTypes.object,
     onChange: React.PropTypes.func,
   }
 
@@ -30,13 +29,15 @@ class Filter extends React.Component {
   }
 
   render() {
-    const options = this.props.options == null ? [] : this.props.options;
+    const options = this.props.filter.options == null ? [] : this.props.filter.options;
     return (
-      <div className="filter" style={{ borderBottom:'solid 1px #CCC'}}>
-        <div className="flex center centred"><IconButton icon="expand_more" onMouseUp={this.goAdvanced} /></div>
-        <Select options={options} value={this.props.filter.criteria} onChange={this.handleCriteriaChange} />
-        <Field placeholder="..." value={this.props.filter.value} onChange={this.handleValueChange}/>
-        <div className="flex center centred"><IconButton icon="close" onMouseUp={this.handleClearFilter} /></div>
+      <div className={`filter ${this.props.className}`} style={{ borderBottom:'solid 1px #CCC'}}>
+        <div className="flex center centred">
+          <IconButton icon="expand_more" onMouseUp={this.goAdvanced} />
+          <Select options={options} value={this.props.filter.criteria} onChange={this.handleCriteriaChange} />
+          <Field placeholder="..." value={this.props.filter.value} onChange={this.handleValueChange}/>
+          <IconButton icon="close" onMouseUp={this.handleClearFilter} />
+        </div>
       </div>
     );
   }

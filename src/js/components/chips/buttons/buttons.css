@@ -31,6 +31,12 @@
   background-color: rgba(100, 100, 100, 0.3);
 }
 
+.icon-button.half {
+  height: 3.6rem;
+  padding-top: 0.2rem;
+  border-radius: 0 0 1rem 1rem;
+}
+
 .button {
   box-sizing: border-box;
   height: 4.8rem;

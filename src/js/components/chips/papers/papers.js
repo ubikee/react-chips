@@ -16,7 +16,7 @@ Paper.propTypes = {
 class ExpansionPaper extends React.Component {
 
   defaultProps = {
-    collapsed: true,
+    collapsed: this.props.collapsed,
   };
 
   state = {
@@ -30,8 +30,8 @@ class ExpansionPaper extends React.Component {
   render() {
     const collapsedClassName = this.state.collapsed ? 'collapsed' : '';
     return (
-      <div className={`paper expansion animated ${collapsedClassName} ${this.props.className}`}>
-        <IconButton classes="icon-button animated collapser" icon="keyboard_arrow_down" onMouseUp={this.handleToggleExpansion}/>
+      <div className={`expansion animated ${collapsedClassName} ${this.props.className}`}>
+        <IconButton classes="icon-button animated collapser light" icon="keyboard_arrow_down" onMouseUp={this.handleToggleExpansion}/>
         {this.props.children}
       </div>
     );
@@ -40,6 +40,7 @@ class ExpansionPaper extends React.Component {
 
 ExpansionPaper.propTypes = {
   children: React.PropTypes.node,
+  collapsed: React.PropTypes.bool,
   className: React.PropTypes.string,
 };
 

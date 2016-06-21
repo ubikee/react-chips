@@ -24,7 +24,7 @@ class Papers extends React.Component {
         <div style={{ padding: '2rem' }}>
           <h3>Expansion Paper</h3>
           <ExpansionPaper>
-            <div className="fixed animated flex centred">This is a raised paper</div>
+            <div className="fixed animated flex centred">This is a extensible paper</div>
             <div className="collapsable">Content</div>
           </ExpansionPaper>
         </div>

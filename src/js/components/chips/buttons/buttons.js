@@ -39,7 +39,7 @@ Button.propTypes = {
 const IconButton = (props) => {
   const iconClasses = props.classes ? props.classes : 'icon-button animated';
   return (
-    <button id={props.id} className={iconClasses} onMouseUp={props.onMouseUp}>
+    <button id={props.id} className={`${iconClasses} ${props.className} `} onMouseUp={props.onMouseUp}>
       {props.icon ? materialIcon(props.icon) : null}
     </button>
   );};

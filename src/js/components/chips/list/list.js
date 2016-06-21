@@ -17,7 +17,7 @@ const ListItemLine = ({text, info}) => {
   );
 };
 
-const ListItem = ({ id, title, subtitle, info, icon, avatar, children, selected, onSelected }) => {
+const ListItem = ({ id, title, subtitle, info, icon, avatar, children, selected, onSelected, action }) => {
 
   const handleSelected = () => {
     onSelected(id);
@@ -28,7 +28,7 @@ const ListItem = ({ id, title, subtitle, info, icon, avatar, children, selected,
   const renderDecorator = avatar ? renderAvatar() : icon ? renderIcon(): '';
 
   return (
-    <li className={`listitem ${selected}`} onClick={handleSelected} >
+    <li className={`listitem selectable ${selected}`} onClick={handleSelected} >
       <div className="avatar ">
         {renderDecorator}
       </div>
@@ -40,6 +40,7 @@ const ListItem = ({ id, title, subtitle, info, icon, avatar, children, selected,
         </div>
         <div className="content">{children}</div>
       </div>
+      <div className="actions">{action}</div>
     </li>
   );
 };

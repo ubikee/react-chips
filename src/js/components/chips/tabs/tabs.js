@@ -32,7 +32,7 @@ const Tabs = (props) => {
     props.children, (child) => React.cloneElement(child, { onMouseUp: props.onChanged })
   );
   return (
-    <nav className="tabbar">{tabs}</nav>
+    <nav className={`tabbar ${props.className} `}>{tabs}</nav>
   );
 };
 
