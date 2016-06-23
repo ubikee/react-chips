@@ -7,7 +7,7 @@ import './header.css';
 const Header = (props) => {
   const goBack = () => { browserHistory.push('/'); };
   // const goSearch = () => { browserHistory.push('search'); };
-  const logout = () => { delete localStorage.token; };
+  const logout = () => { localStorage.removeItem('DSSession'); };
   const print = () => { browserHistory.push('print'); };
 
   // const searchButton = <IconButton id="search-button" icon="search" onClick={goSearch} />

@@ -17,6 +17,38 @@
   box-shadow: 0 8px 8px 0 rgba(0,0,0,.16),0 0 8px 0 rgba(0,0,0,.12);
 }
 
+.paper.collapsed > * {
+  display: none;
+}
+
+.tabbed-paper .paper {
+  padding: 0;
+  min-height: 5rem;
+  max-height: 5rem;
+  overflow: hidden;
+}
+
+.tabbed-paper .paper.collapsed {
+  min-height: 0;
+  max-height: 0;
+}
+
+.tabbed-paper .tabs {
+  position: relative;
+  max-height: 2rem;
+  padding-right: 1.6rem;
+}
+
+.tabbed-paper .tabs .icon-button {
+  color: #777;
+  position: absolute;
+  top: -1px;
+  border: solid 1px #B6B6B6;
+  border-top: solid 1px #EEE;
+  right: 1.6rem;
+  background-color: #EEE;
+}
+
 .expansion {
   position: relative;
   padding: 1.5rem 1rem 0 2.4rem;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconButton } from '../buttons/buttons';
 import { Select, Field } from './fields';
-
 import './filter.css';
 
 class Filter extends React.Component {
@@ -10,6 +9,7 @@ class Filter extends React.Component {
     options: React.PropTypes.array,
     filter: React.PropTypes.object,
     onChange: React.PropTypes.func,
+    toggleDialog: React.PropTypes.func,
   }
 
   handleValueChange = (nextValue) => {
@@ -24,17 +24,12 @@ class Filter extends React.Component {
     this.props.onChange({ criteria: '', value: '' });
   };
 
-  goAdvanced = () => {
-    alert("TODO: mostrar opciones de filtro avanzado");
-  }
-
   render() {
     const options = this.props.filter.options == null ? [] : this.props.filter.options;
     return (
       <div className={`filter ${this.props.className}`} style={{ borderBottom:'solid 1px #CCC'}}>
-        <div className="flex center centred">
-          <IconButton icon="expand_more" onMouseUp={this.goAdvanced} />
-          <Select options={options} value={this.props.filter.criteria} onChange={this.handleCriteriaChange} />
+        <div className="flex center">
+          <Select options={options} value={this.props.filter.criteria} onChange={this.handleCriteriaChange} onClick={this.openCenterDialog}/>
           <Field placeholder="..." value={this.props.filter.value} onChange={this.handleValueChange}/>
           <IconButton icon="close" onMouseUp={this.handleClearFilter} />
         </div>
