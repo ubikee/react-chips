@@ -23,8 +23,6 @@
 
 .tabbed-paper .paper {
   padding: 0;
-  min-height: 5rem;
-  max-height: 5rem;
   overflow: hidden;
 }
 
@@ -42,7 +40,7 @@
 .tabbed-paper .tabs .icon-button {
   color: #777;
   position: absolute;
-  top: -1px;
+  top: 0px;
   border: solid 1px #B6B6B6;
   border-top: solid 1px #EEE;
   right: 1.6rem;

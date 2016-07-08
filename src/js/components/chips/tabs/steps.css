@@ -5,10 +5,13 @@
 
 .stepper {
   padding: 1rem 2rem;
-  background-color: #FFF;
   display:flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.stepper .icon-button {
+  color: #727272;
 }
 
 .dot {
@@ -21,16 +24,15 @@
 }
 
 .dot.selected {
-  background-color: blue;
-  border: solid 0.6rem blue;
+  border: solid 0.5rem blue;
 }
 
 .dot.success {
   background-color: green;
-  border: solid 0.6rem green;
+  border: solid 0.5rem green;
 }
 
 .dot.error {
   background-color: red;
-  border: solid 0.6rem red;
+  border: solid 0.5rem red;
 }

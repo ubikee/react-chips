@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../buttons/buttons';
+import { IconButton, Button } from '../buttons/buttons';
 import './steps.css';
 
 const Step = (props) => (
@@ -13,10 +13,24 @@ Step.propTypes = {
   children: React.PropTypes.node,
 };
 
+/**
+ * Stepper
+ *
+ */
 class Stepper extends React.Component {
 
   static propTypes = {
-    step: React.PropTypes.number.isRequired,
+    step: React.PropTypes.number,
+    steps: React.PropTypes.number.isRequired,
+    backIcon: React.PropTypes.string,
+    nextIcon: React.PropTypes.string,
+  }
+
+  static defaultProps = {
+    step: 1,
+    steps: 3,
+    nextIcon: 'chevron_right',
+    backIcon: 'chevron_left',
   }
 
   handleBack = () => {
@@ -28,21 +42,29 @@ class Stepper extends React.Component {
   }
 
   renderDots = () => {
-    return this.props.steps.map((item) => {
-      const selectedClass = item == this.props.step ? 'selected' : '';
-      return (<div className={`dot ${selectedClass}`} />);
-    });
+
+    const dots = [];
+    for (let i=1; i <= this.props.steps; i++ ) {
+      const selectedClass = this.props.step === i ? 'selected' : '';
+      dots.push(<div className={`dot ${selectedClass}`} />);
+    }
+    return dots;
+  }
+
+  renderButton = (icon, label, handler) => {
+    return this.props.nextLabel ?
+      <Button icon={icon} label={label} onMouseUp={handler} /> :
+      <IconButton icon={icon} onMouseUp={handler} />;
   }
 
   render() {
-
     const backButtonClass = this.props.step === 1 ? 'disabled' : '';
     const nextButtonClass = this.props.step === this.props.steps.length ? 'disabled' : '';
     return (
       <div className="stepper">
-        <Button icon="arrow_left" label="BACK" onMouseUp={this.handleBack} classes={backButtonClass}/>
+        {this.renderButton(this.props.backIcon, null, this.handleBack)}
         <div className="flex">{this.renderDots()}</div>
-        <Button icon="arrow_right" label="NEXT" onMouseUp={this.handleNext} classes={nextButtonClass}/>
+        {this.renderButton(this.props.nextIcon, null, this.handleNext)}
       </div>
     );
   }

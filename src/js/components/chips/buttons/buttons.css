@@ -37,6 +37,23 @@
   border-radius: 0 0 1rem 1rem;
 }
 
+.icon-button.small {
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 5rem;
+  padding: .2rem;
+  background-color: transparent;
+}
+
+.icon-button.small .material-icons {
+  font-size: 1.4rem;
+}
+
+.icon-button.small:hover {
+  background-color: #EEE;
+  background-color: rgba(200, 200, 200, 0.6);
+}
 .button {
   box-sizing: border-box;
   height: 4.8rem;

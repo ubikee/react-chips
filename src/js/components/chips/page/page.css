@@ -13,7 +13,6 @@
   align-items: center;
 }
 .page > main {
-  background-color: rgba(255, 255, 255, 0.6);
   overflow: hidden;
   flex:1;
   display:flex;
@@ -41,7 +40,7 @@
   .page > main {
     z-index: 1999;
     margin-top: 5.6rem;
-    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);
+
     padding-left:0px;
     padding-top: 0px;
   }
@@ -59,5 +58,14 @@
   }
   .page .inbox > .inbox-list{
     z-index: auto;
+  }
+}
+
+@media print {
+  .page, .page > main {
+    overflow: visible;
+    display: block;
+    width: 100%;
+    padding: 0;
   }
 }

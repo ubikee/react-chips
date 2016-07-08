@@ -4,8 +4,9 @@ import './papers.css';
 
 const Paper = (props) => {
   const collapsed = props.collapsed ? 'collapsed' : '';
+  const maximized = props.maximized ? 'maximized' : '';
   return (
-    <div className={`paper ${collapsed} animated-fast ${props.className}`}>
+    <div className={`paper ${collapsed} ${maximized} animated-fast ${props.className}`}>
       {props.children}
     </div>
   );
@@ -52,6 +53,7 @@ class TabbedPaper extends React.Component {
   static propTypes = {
     collapsed: React.PropTypes.bool,
     children: React.PropTypes.node,
+    icon: React.PropTypes.string,
   }
 
   defaultProps = {
@@ -59,12 +61,11 @@ class TabbedPaper extends React.Component {
   }
 
   render() {
-    console.log(this.props.collapsed)
     return (
       <div className="tabbed-paper">
         <Paper {...this.props}/>
         <div className="tabs">
-          <IconButton icon="filter_list" className="half shadow-bottom" onMouseUp={this.props.onMouseUp}/>
+          <IconButton icon={this.props.icon} className="half shadow-bottom" onMouseUp={this.props.onMouseUp}/>
         </div>
       </div>
     );
