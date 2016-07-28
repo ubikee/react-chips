@@ -15,8 +15,9 @@ const Header = (props) => {
   const drawerButton = (props.to || props.back) ? '' : <IconButton id="drawer-button" icon="menu" onMouseUp={props.toggleDrawer} />;
   const backButton = props.to ? <Link to={props.to}><IconButton id="back-button" icon="arrow_back" onMouseUp={goBack} /></Link> : '';
   const backAction = props.back ? <IconButton id="back-button" icon="arrow_back" onMouseUp={props.back} />: '';
-  const logoutButton = <Link to="/"><IconButton id="logout-button" icon="exit_to_app" onMouseUp={logout} /></Link>;
-  const printButton = <Link to="/print"><IconButton id="print-button" icon="print"/></Link>;
+  const logoutButton = props.logout ? <Link to="/"><IconButton id="logout-button" icon="exit_to_app" onMouseUp={logout} /></Link>: '';
+  const editButton = props.edit ? <Link to="/"><IconButton id="print-button" icon="edit" onMouseUp={props.edit}/></Link>: '';
+  const printButton = props.print ? <Link to="/print"><IconButton id="print-button" icon="print"/></Link>: '';
 
   return (
     <header className="header">
@@ -25,6 +26,7 @@ const Header = (props) => {
       {backAction}
       {icon}
       <span className="title">{props.title}</span>
+      {editButton}
       {printButton}
       {logoutButton}
     </header>

@@ -14,7 +14,7 @@ const Badge = (props) => {
   const selected = props.selected ? 'selected' : '';
   const handleUnselect = () => {
     props.onSelectionChanged({
-      value: props.label,
+      value: props.value,
       selected: false,
     });
   };
@@ -23,7 +23,7 @@ const Badge = (props) => {
   const handleToggleSelected = () => {
     if (!props.selected) {
       props.onSelectionChanged({
-        value: props.label,
+        value: props.value,
         selected: true,
       });
     }
@@ -40,6 +40,7 @@ Badge.propTypes = {
   selected: React.PropTypes.bool,
   icon: React.PropTypes.string,
   label: React.PropTypes.string,
+  value: React.PropTypes.string,
   className: React.PropTypes.string,
   onSelectionChanged: React.PropTypes.func,
 };

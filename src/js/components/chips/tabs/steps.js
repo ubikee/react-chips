@@ -42,9 +42,8 @@ class Stepper extends React.Component {
   }
 
   renderDots = () => {
-
     const dots = [];
-    for (let i=1; i <= this.props.steps; i++ ) {
+    for (let i = 1; i <= this.props.steps; i++) {
       const selectedClass = this.props.step === i ? 'selected' : '';
       dots.push(<div className={`dot ${selectedClass}`} />);
     }

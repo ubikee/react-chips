@@ -7,7 +7,7 @@ const materialIcon = (icon) => (
 );
 
 const Icon = (props) => (
-  <div id={props.id} className="icon flex center centred">
+  <div id={props.id} className={`icon flex center centred ${props.className}`}>
     {materialIcon(props.icon)}
   </div>
 );
@@ -17,11 +17,29 @@ Icon.propTypes = {
   icon: React.PropTypes.string,
 };
 
+const DecoratedIcon = (props) => (
+  <div id={props.id} className="decorated-icon">
+    <div className={`icon flex center centred ${props.className}`}>
+      {materialIcon(props.icon)}
+    </div>
+    <div className={`decorator flex center centred ${props.className}`}>
+      {materialIcon(props.decorator)}
+    </div>
+  </div>
+);
+
+DecoratedIcon.propTypes = {
+  id: React.PropTypes.string,
+  icon: React.PropTypes.string,
+  decorator: React.PropTypes.string,
+  className: React.PropTypes.string,
+};
+
 const Button = (props) => {
   const onMouseUp = props.classes === 'disabled' ? null : props.onMouseUp;
 
   return (
-    <button id={props.id} className={`button animated-fast ${props.classes}`} onMouseUp={onMouseUp}>
+    <button id={props.id} className={`button animated-fast ${props.className} ${props.classes}`} onMouseUp={onMouseUp}>
       {props.icon ? materialIcon(props.icon) : null}
       {props.label}
     </button>
@@ -53,7 +71,7 @@ IconButton.propTypes = {
 
 const FAB = (props) => (
   <Link to={props.to}>
-    <IconButton icon={props.icon} classes="fab animated-fast accent-color" onMouseUp={props.onMouseUp} />
+    <IconButton id={props.id} icon={props.icon} classes="fab animated-fast accent-color" onMouseUp={props.onMouseUp} />
   </Link>
 );
 
@@ -63,6 +81,9 @@ FAB.propTypes = {
   onMouseUp: React.PropTypes.func,
 };
 
+/**
+ * CheckButton
+ */
 const CheckButton = (props) => {
 
   const icons = {
@@ -80,12 +101,13 @@ const CheckButton = (props) => {
   }
 
   return (
-    <IconButton icon={icon} onMouseUp={handleValueChange} />
+    <IconButton id={props.id} icon={icon} onMouseUp={handleValueChange} />
   );
 };
 
 CheckButton.propTypes = {
   id: React.PropTypes.string,
+  value: React.PropTypes.string,
 }
 
-export { Icon, IconButton, Button, CheckButton, FAB, materialIcon };
+export { Icon, DecoratedIcon, IconButton, Button, CheckButton, FAB, materialIcon };

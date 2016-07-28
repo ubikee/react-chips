@@ -21,6 +21,8 @@ class Field extends React.Component {
     value: React.PropTypes.string,
     readOnly: React.PropTypes.bool,
     onChange: React.PropTypes.func,
+    required: React.PropTypes.bool,
+    type: React.PropTypes.string,
   };
 
   handleChange = (e) => {
@@ -41,26 +43,32 @@ class Field extends React.Component {
   }
 
   renderInput() {
+    const type = this.props.type ? this.props.type: 'text';
+    const required = this.props.required ? 'required' : '';
       return (
         <div className="field input-textfield mui-textfield mui-textfield--float-label">
-          <input id={this.props.id} type="text" value={this.props.value} onChange={this.handleChange}></input>
+          <input id={this.props.id} type={type} value={this.props.value} onChange={this.handleChange} required={required}></input>
           <label>{this.props.label}</label>
         </div>
       );
   }
 }
 
+/**
+ * Selection field
+ */
 const Select = (props) => {
 
+  const required = props.required ? 'required' : '';
   const options = props.options.map(option => (<option value={option.value} disabled={option.disabled} >{option.label}</option>));
 
   const handleChange = (e) => {
-    props.onChange(e.target.value);
+    props.onChange(e.target.value, props.id);
   };
 
   return (
     <div className="field select mui-select">
-      <select value={props.value} onChange={handleChange} style={{marginBottom:'0'}}>
+      <select id={props.id} value={props.value} onChange={handleChange} style={{marginBottom:'0'}} required={required}>
         {options}
       </select>
     </div>
@@ -68,6 +76,7 @@ const Select = (props) => {
 };
 
 Select.propTypes = {
+  id: React.PropTypes.string,
   options: React.PropTypes.array.isRequired,
   value: React.PropTypes.string,
   onChange: React.PropTypes.func,
@@ -106,7 +115,8 @@ class Slider extends React.Component {
   }
 
   toggleSlider = () => {
-    this.setState({ checked: !this.state.checked });
+    //this.setState({ checked: !this.state.checked });
+    this.props.onMouseUp(!this.state.checked);
   }
 
   render() {
@@ -117,7 +127,11 @@ class Slider extends React.Component {
       </div>
     );
   }
+}
 
-};
+Slider.propTypes = {
+  checked: React.PropTypes.bool,
+  onMouseUp: React.PropTypes.func,
+}
 
 export { FieldGroup, Field, Select, Checkbox, Slider };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button } from '../../chips/buttons/buttons';
+import { Icon, DecoratedIcon, Button } from '../../chips/buttons/buttons';
 import './list.css';
 
 const Avatar = ({color, initial}) => (
@@ -17,14 +17,14 @@ const ListItemLine = ({text, info}) => {
   );
 };
 
-const ListItem = ({ id, title, subtitle, info, icon, avatar, children, selected, onSelected, action }) => {
+const ListItem = ({ id, title, subtitle, info, icon, decorator, avatar, children, selected, onSelected, action }) => {
 
   const handleSelected = () => {
     onSelected(id);
   };
 
   const renderAvatar = () => <Avatar color={avatar.color} initial={avatar.initial}/>;
-  const renderIcon = () => <Icon icon={icon} />;
+  const renderIcon = decorator ? () => <DecoratedIcon icon={icon} decorator={decorator} /> : () => <Icon icon={icon} />;
   const renderDecorator = avatar ? renderAvatar() : icon ? renderIcon(): '';
 
   return (
