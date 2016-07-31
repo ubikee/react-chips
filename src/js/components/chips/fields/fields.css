@@ -26,7 +26,7 @@
   padding-right: 1rem;
 }
 .fieldgroup > .fields > .field.static {
-  flex:0;
+  flex:1;
   min-width: 15rem;
   padding-right: 1rem;
 }

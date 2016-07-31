@@ -71,13 +71,22 @@ IconButton.propTypes = {
 
 const FAB = (props) => (
   <Link to={props.to}>
-    <IconButton id={props.id} icon={props.icon} classes="fab animated-fast accent-color" onMouseUp={props.onMouseUp} />
+    <IconButton id={props.id} icon={props.icon} classes={`fab animated-fast accent-color ${props.className}`} onMouseUp={props.onMouseUp} />
   </Link>
 );
 
 FAB.propTypes = {
   icon: React.PropTypes.string,
   to: React.PropTypes.string,
+  onMouseUp: React.PropTypes.func,
+};
+
+const FAB2 = (props) => (
+    <IconButton id={props.id} icon={props.icon} classes={`fab animated-fast accent-color ${props.className}`} onMouseUp={props.onMouseUp} />
+);
+
+FAB2.propTypes = {
+  icon: React.PropTypes.string,
   onMouseUp: React.PropTypes.func,
 };
 
@@ -98,16 +107,18 @@ const CheckButton = (props) => {
     const v = Object.keys(icons).indexOf(props.value);
     const nextValue = Object.keys(icons)[(v + 1) % 3];
     props.onValueChanged(props.id, nextValue);
-  }
+  };
 
-  return (
-    <IconButton id={props.id} icon={icon} onMouseUp={handleValueChange} />
-  );
+  return props.readOnly ?
+    (<Icon icon={icon} />) :
+    (<IconButton id={props.id} icon={icon} onMouseUp={handleValueChange} />);
 };
 
 CheckButton.propTypes = {
   id: React.PropTypes.string,
   value: React.PropTypes.string,
+  onValueChanged: React.PropTypes.func,
+  readOnly: React.PropTypes.bool,
 }
 
-export { Icon, DecoratedIcon, IconButton, Button, CheckButton, FAB, materialIcon };
+export { Icon, DecoratedIcon, IconButton, Button, CheckButton, FAB, FAB2, materialIcon };
