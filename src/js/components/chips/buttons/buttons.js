@@ -6,6 +6,10 @@ const materialIcon = (icon) => (
   <i className="material-icons">{icon}</i>
 );
 
+/**
+ * Icon
+ *
+ */
 const Icon = (props) => (
   <div id={props.id} className={`icon flex center centred ${props.className}`}>
     {materialIcon(props.icon)}

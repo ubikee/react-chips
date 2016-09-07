@@ -14,6 +14,7 @@ const Badge = (props) => {
   const selected = props.selected ? 'selected' : '';
   const handleUnselect = () => {
     props.onSelectionChanged({
+      label: props.label,
       value: props.value,
       selected: false,
     });
@@ -23,6 +24,7 @@ const Badge = (props) => {
   const handleToggleSelected = () => {
     if (!props.selected) {
       props.onSelectionChanged({
+        label: props.label,
         value: props.value,
         selected: true,
       });

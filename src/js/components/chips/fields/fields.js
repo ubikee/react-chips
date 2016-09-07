@@ -45,8 +45,9 @@ class Field extends React.Component {
   renderInput() {
     const type = this.props.type ? this.props.type: 'text';
     const required = this.props.required ? 'required' : '';
+    const float = this.props.type === 'date' ? '' : 'mui-textfield--float-label';
       return (
-        <div className="field input-textfield mui-textfield mui-textfield--float-label">
+        <div className={`field input-textfield mui-textfield ${float}`}>
           <input id={this.props.id} type={type} value={this.props.value} onChange={this.handleChange} required={required}></input>
           <label>{this.props.label}</label>
         </div>
@@ -67,10 +68,11 @@ const Select = (props) => {
   };
 
   return (
-    <div className="field select mui-select">
+    <div className="field select mui-select ">
       <select id={props.id} value={props.value} onChange={handleChange} style={{marginBottom:'0'}} required={required}>
         {options}
       </select>
+      <label>{props.label}</label>
     </div>
   );
 };
@@ -82,6 +84,25 @@ Select.propTypes = {
   onChange: React.PropTypes.func,
 };
 
+/**
+ * Horizontal selector
+ *
+ */
+const HList = (props) => {
+  return (
+    <div className="field hlist">
+      <div className="icon flex center centred">
+        <i className="material-icons">{props.icon}</i>
+      </div>
+      <div className="flex centred hscroll">{props.children}</div>
+    </div>
+  );
+};
+
+/**
+ * Checkbox
+ *
+ */
 const Checkbox = (props) => {
   const checked = props.checked ? 'checked' : '';
   const label = props.checkedLabel ? (props.checked ? props.checkedLabel : props.label) : props.label;
@@ -108,6 +129,7 @@ Checkbox.propTypes = {
   onChange: React.PropTypes.func,
 };
 
+
 class Slider extends React.Component {
 
   state = {
@@ -132,6 +154,6 @@ class Slider extends React.Component {
 Slider.propTypes = {
   checked: React.PropTypes.bool,
   onMouseUp: React.PropTypes.func,
-}
+};
 
-export { FieldGroup, Field, Select, Checkbox, Slider };
+export { FieldGroup, Field, Select, HList, Checkbox, Slider };

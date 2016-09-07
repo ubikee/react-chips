@@ -1,31 +1,21 @@
-module.exports = {
-  entry: './src/js/main.js',
-  output: {
-    path: './dist',
-    filename: 'bundle.js',
-    publicPath: '/',
-  },
-  devServer: {
-    inline: true,
-    contentBase: './dist',
-    https: true,
-    host: '192.168.1.137',
-    port: 5555,
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'stage-1', 'react'],
-        },
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
-      },
-    ],
-  },
+const { resolve } = require('path');
+
+module.exports = env => {
+  return {
+    context: resolve(__dirname, 'src'),
+    entry: './js/main.js',
+    output: {
+      filename: 'bundle.js',
+      path: resolve(__dirname, 'dist'),
+      pathinfo: !env.prod,
+    },
+    module: {
+      loaders: [
+        { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+        { test: /\.jsx?$/, loader: 'babel', exclude: /(node_modules|bower_components)/ },
+        { test: /\.css$/, loader: 'style!css' },
+        { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      ],
+    },
+  }
 };

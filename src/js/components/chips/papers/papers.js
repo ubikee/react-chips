@@ -1,7 +1,14 @@
 import React from 'react';
+
+// chips
 import { IconButton } from '../buttons/buttons';
+
+// css
 import './papers.css';
 
+/**
+ * Paper
+ */
 const Paper = (props) => {
   const collapsed = props.collapsed ? 'collapsed' : '';
   const maximized = props.maximized ? 'maximized' : '';
@@ -17,6 +24,9 @@ Paper.propTypes = {
   className: React.PropTypes.string,
 };
 
+/**
+ * ExpansionPaper
+ */
 class ExpansionPaper extends React.Component {
 
   static propTypes = {
@@ -48,6 +58,9 @@ class ExpansionPaper extends React.Component {
   }
 }
 
+/**
+ * TabbedPaper
+ */
 class TabbedPaper extends React.Component {
 
   static propTypes = {
