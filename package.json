@@ -1,6 +1,6 @@
 {
   "name": "react-chips",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Web components for React apps",
   "scripts": {
     "start": "webpack-dev-server --env.dev --content-base dist"
